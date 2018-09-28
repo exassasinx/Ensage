@@ -61,7 +61,7 @@
             var blockTarget = EntityManager<Hero>.Entities.OrderBy(x => x.Distance2D(hero))
                 .FirstOrDefault(
                     x => x.IsValid && x.IsVisible && x.IsAlive && !x.IsIllusion && x.Distance2D(hero) < 1000
-                         && x.IsEnemy(hero) && !x.UnitState.HasFlag(UnitState.NoCollision));
+                         && x.Team == hero.Team && !x.UnitState.HasFlag(UnitState.NoCollision));
 
             if (blockTarget == null)
             {
